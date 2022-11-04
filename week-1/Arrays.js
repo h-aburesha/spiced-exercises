@@ -23,7 +23,7 @@
 //     console.log("hello");
 // }
 
-colors = ["cyan", "magenta", "teal", "purple"];
+let colors = ["cyan", "magenta", "teal", "purple"];
 
 const shortwordColors = colors.filter((color) => {
     const isShort = color.length <= 4;
