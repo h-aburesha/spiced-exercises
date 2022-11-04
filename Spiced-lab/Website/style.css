@@ -54,24 +54,96 @@ nav {
     transform: translate(-50%, -50%);
 }
 
-article h3 {
+.grey_area {
+    display: block;
+    height: auto;
+    width: auto;
+    background-color: lightgray;
+}
+
+.thumbnails {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.column1 {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.row1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column2 {
+    float: left;
+    width: 50%;
+    text-align: left;
+}
+
+.row2:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+article .h3 {
     font-size: 18pt;
     color: blue;
 }
 
 footer {
-    /* position: fixed; */
+    position: relative;
     bottom: 0;
     border-top: 1px solid black;
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: lightgray;
+
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #666666;
 }
 
-footer h6 {
+footer h5 {
     transform: translateX(+2%);
+    color: white;
 }
+
+/* #table1 {
+    display: table-row;
+}
+
+#table_cells1 {
+    display: table-cell;
+    vertical-align: left;
+}
+
+#table2 {
+    display: table-row;
+}
+
+#table_cells2 {
+    display: table-cell;
+    vertical-align: left;
+} */
+
+/* 
+ display: inline-block; position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; */
+
+/* button {
+    transition: transform 300ms;
+    animation-name: jiggle;
+    animation-duration: 300ms;
+    animation-iteration-count: infinite;
+}
+
+button:hover {
+    transform: scale(1.5);
+} */
 
 /* * {
     box-sizing: border-box;
