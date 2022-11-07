@@ -83,8 +83,14 @@ h2 {
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) and (prefers-color-scheme: dark) {
     body {
         background-color: white;
+    }
+}
+
+@media print {
+    * {
+        background-color: lightgray;
     }
 }
