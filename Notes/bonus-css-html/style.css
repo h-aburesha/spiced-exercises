@@ -1,0 +1,44 @@
+* {
+    background-color: grey;
+}
+
+.head {
+    width: 200px;
+    height: 200px;
+
+    border: 2px solid black;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.body {
+    height: 400px;
+    width: 0px;
+    border: 4px solid black;
+    top: 303px;
+    left: 199px;
+    position: absolute;
+}
+
+.arm {
+    width: 200px;
+    height: 0px;
+    border: 3px solid purple;
+
+    position: absolute;
+    top: 400px;
+    left: 200px;
+}
+
+.arm.right {
+    transform: rotate(315);
+    transform-origin: left;
+}
+
+.arm.left {
+    transform: rotate(220);
+    transform-origin: left;
+}
