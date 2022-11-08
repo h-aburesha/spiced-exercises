@@ -22,27 +22,19 @@ const rectangle = new Rectangle(3, 4);
 console.log(rectangle);
 console.log("area: ", rectangle.getArea());
 
-// let rectangleOne = new rectangle(2, 4);
-// console.log(rectangleOne);
+function Square(l) {
+    Rectangle.call(this, l, l);
+}
+const square = new Square(8);
+console.log(square, square.getArea());
 
-// rectangleOne.getArea();
-// console.log(rectangleOne.getArea());
+// second task //
 
-// console.log(typeof rectangleOne);
-
-// function square(width) {
-//     this.width = width;
-//     this.height = width;
-// }
-
-// let squareOne = new square(6);
-
-// squareOne.getArea();
-// console.log(squareOne.getArea());
-
-// // function square(widthAndHeight) {
-// //     this.widthAndHeight = widthAndHeight;
-// //     this.getArea = function () {
-// //         return this.widthAndHeight * 2;
-// //     };
-// // }
+function invertCase(text) {
+    let newText = "";
+    for (let char of text) {
+        if ((char === char.toUpperCase()) === char) {
+            newText = newText;
+        }
+    }
+}
