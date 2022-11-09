@@ -4,8 +4,10 @@
 
 let headlines = document.getElementById("headlines");
 let firstLink = document.querySelector("a");
+let ticker = document.querySelector("#ticker");
 let widthOfHeadlines = headlines.offsetWidth;
 let currentLeftValue = widthOfHeadlines;
+let id;
 
 function moveLeft() {
     if (headlines.offsetLeft + firstLink.offsetWidth < 0) {
@@ -16,6 +18,14 @@ function moveLeft() {
         headlines.style.left = currentLeftValue + "px";
     }
 
+    // STEPS to stop animation and restart it:
+    // 0. save instance of #ticker to variable with any method.
+    // 1. have a variable where we can save the current identifier for requestAnimationFrame()
+    // 1. add a eventlistner to headlines for ‘mouseenter’
+    //     - in the callback function for ‘mousenter’ we want to cancel the animation (cancelAnimationFrame)
+    // 2. add another eventlistner to headlines for ’mouse
+    //     - in the callback functuion for ‘mouseleave’ we
+
     // check if sum of headlines.offsetLeft and firstLink.offsetWidth is smaller than 0
     // if yes, do the following steps:
     // remove the firstLink from headlines
@@ -24,7 +34,7 @@ function moveLeft() {
     // reset currentLeftValue to 0
     // set headlines.style.left to the new value of currentLeftValue
 
-    requestAnimationFrame(() => {
+    id = requestAnimationFrame(() => {
         currentLeftValue = currentLeftValue - 1;
         headlines.style.left = currentLeftValue + "px";
         moveLeft();
@@ -32,3 +42,11 @@ function moveLeft() {
 }
 
 moveLeft();
+
+headlines.addEventListener("mouseenter", function () {
+    cancelAnimationFrame(id);
+});
+
+headlines.addEventListener("mouseleave", function () {
+    moveLeft();
+});
