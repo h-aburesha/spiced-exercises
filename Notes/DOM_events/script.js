@@ -40,35 +40,35 @@ var count = 0;
 //     }
 // });
 
-// // DO YOU WANT TO LEAVE WEBSITE???
+// DO YOU WANT TO LEAVE WEBSITE???
 
-// var link = document.querySelector("a");
+var link = document.querySelector("a");
 
-// link.addEventListener("click", function (event) {
-//     if (confirm("do you want to leave the website?")) {
-//         console.log("leaving");
-//         return;
-//     } else {
-//         console.log("staying on page");
-//         event.preventDefault();
-//     }
-// });
+link.addEventListener("click", function (event) {
+    if (confirm("do you want to leave the website?")) {
+        console.log("leaving");
+        return;
+    } else {
+        console.log("staying on page");
+        event.preventDefault();
+    }
+});
 
 // change color buttons
 
-// var title = document.querySelector("h1");
-// var buttons = document.querySelectorAll("button");
+var title = document.querySelector("h1");
+var buttons = document.querySelectorAll("button");
 
-// // console.log("buttons", buttons);
+console.log("buttons", buttons);
 
-// buttons.forEach(function (button) {
-//     button.addEventListener("click", function (event) {
-//         // console.log(event.target.id);
-//         title.style.color = event.target.id; // or just simpley "red", etc.
-//         // note that the id just injects the color to the above, so if there is a typo it will
-//         // not translate to anything in css upon change.
-//     });
-// });
+buttons.forEach(function (button) {
+    button.addEventListener("click", function (event) {
+        // console.log(event.target.id);
+        title.style.color = event.target.id; // or just simpley "red", etc.
+        // note that the id just injects the color to the above, so if there is a typo it will
+        // not translate to anything in css upon change.
+    });
+});
 
 var input = document.body.querySelector("input");
 console.log("input", input);
