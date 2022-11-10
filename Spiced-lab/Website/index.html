@@ -2,26 +2,52 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" href="style.css" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Placing Elements</title>
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="script.js"></script>
     </head>
 
+    
     <body>
-        <nav>
-            <img id="logo" src="spiced.png" />
-            <img id="menu" src="hamburgermenu.svg" />
+        
+        <div class="hidden" id="backdrop">
+        <main>
+                <nav>
+                    <img id="logo" src="spiced.png" />
+                    <img id="menu_svg" src="hamburgermenu.svg" />
+                    
+                    <div class="hidden" id="side-bar">
+
+                        <span id="closebutton">X</span>
+
+                        <ul id="hamburger_items">
+                            <a href="">Settings</a>
+                            <br>
+                            <a href="">Pricing</a>
+                            <br>
+                            <a href="">Upgrade</a>
+                            <br>
+                            <a href="">Subscribe</a>
+                            <br>
+                            <a href="">Logout</a>
+                        </ul>
+                    </div>   
+
+            
         </nav>
 
-        <main>
-        <section>
+
+
+        <div> 
             <div class="welcome_message">
                 <h1>Welcome to SPICED and the Future.</h1>
                 <button class="button_style" type="button">Get Started</button>
             </div>
-        </section>
-        
+        </div> 
+     
+    <div> 
      <div class="grey_area">
         <section class="row1">
             <article class="column1">
@@ -51,9 +77,11 @@
             </article>
         </section>
     </div>  
+    </div> 
   </main>
 
 
         <footer><h5>© 2016 Some Organization</h5></footer>
+        </div>
     </body>
 </html>
