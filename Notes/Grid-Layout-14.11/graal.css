@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    background-color: blanchedalmond;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 100px 1fr 50px;
+}
+
+body > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    background-color: cadetblue;
+}
+
+header {
+    background-color: lightblue;
+    /* grid-column-start: 1;
+    grid-column-end: 4; SAME BUT BETTER SYNTAX*/
+    grid-column: 1/-1;
+}
+
+main {
+    background-color: aqua;
+}
+
+.ads {
+    background-color: crimson;
+}
+
+footer {
+    background-color: grey;
+    grid-column: 1/-1;
+}

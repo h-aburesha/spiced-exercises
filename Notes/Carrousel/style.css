@@ -1,0 +1,25 @@
+.container {
+    height: 600px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform: translateX(100%);
+    transition: transform 1200ms;
+}
+
+img[class~="onscreen"] {
+    transform: translateX(0%);
+}
+
+img[class~="hidden-left"] {
+    transform: translateX(-100%);
+}

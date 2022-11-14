@@ -1,0 +1,76 @@
+body {}
+
+.AllBoxes {
+  display: flex;
+
+  grid-column-gap: 8px;
+}
+
+#GreyBoxMain {
+  background-color: grey;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+#GreyBoxMain #OraneBoxInside {
+  background-color: orange;
+  height: 50%;
+  width: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#BlackBoxMain {
+  background-color: black;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+#BlackBoxMain #YellowBoxInside {
+  background-color: yellow;
+  height: 50%;
+  width: 50%;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#BlueBoxMain {
+  background-color: blue;
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+#BlueBoxMain #GreenBoxInside {
+  background-color: green;
+  height: 50%;
+  width: 50%;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+}
+
+#PurpleBoxMain {
+  background-color: purple;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+#PurpleBoxMain #PinkBoxInside {
+  background-color: pink;
+  height: 50%;
+  width: 50%;
+  display: inline-block;
+  position: absolute;
+  ;
+  top: 0px;
+  left: 0px;
+}
