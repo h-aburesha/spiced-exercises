@@ -1,12 +1,12 @@
 let images = document.getElementsByTagName("img");
 let imagesArray = Array.from(images);
 
-let dot = Array.from(document.querySelectorAll(".dot"));
+let dots = Array.from(document.querySelectorAll(".dot"));
 // 1. const images = use getElementsByClass or getElementsByTagName or querySelectorAll
 //    to get all the images. Convert it to array with Array.from();
 // 2. let index = 0 // have a running index to know which element we want to add/remove classes to
 
-let i = 0;
+let index = 0; //representing current visible image with the onscreen class and slected dot
 
 function moveImages() {
     setTimeout(() => {
@@ -14,8 +14,8 @@ function moveImages() {
         imagesArray[i].classList.remove("onscreen");
         imagesArray[i].classList.add("hidden-left");
 
-        i = i + 1;
-        i = i === imagesArray.length ? 0 : i;
+        index = index + 1;
+        index = index === imagesArray.length ? 0 : index;
 
         // second kitty
         imagesArray[i].classList.add("onscreen");
@@ -50,6 +50,8 @@ document.addEventListener("transitionend", (event) => {
 // dots[i].addEventListener('click', () => { ... })
 // when the event has fired. Log the index of the clicked dot
 
-// for (let i = 0; i < dot.length; i++) {
-//     dot[i].
-// }
+for (let i = 0; i < dots.length; i++) {
+    dots[i].addEventListener("click", () => {
+        dots[i].classList.add("selected");
+    });
+}
