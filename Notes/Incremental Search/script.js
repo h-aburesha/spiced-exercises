@@ -37,8 +37,8 @@
         // call findResults() first
         // then call renderResults()
         const foundResults = findResults(val);
-        console.log(foundResults);
-
+        // console.log(foundResults);
+        renderResults(foundResults);
         // TODO:
     }
 
@@ -71,7 +71,10 @@
     // shows the results using getResultsHtml()
     function renderResults(foundResults) {
         let finalHTML = getResultsHtml(foundResults);
+        // console.log(finalHTML);
+        results.html(finalHTML);
 
+        // put the finalHTML to our index.html
         // TODO:
     }
 
@@ -80,15 +83,18 @@
     // else return a string containing div tags for
     // every result item
 
-    function getResultsHtml(results) {
+    function getResultsHtml(foundResults) {
         let htmlString = "";
         // check if result is empty
         // if it is return a different HTML with fixed message
 
-        for (let i = 0; i < results.length; i++) {
+        for (let i = 0; i < foundResults.length; i++) {
             // append HTML element to htmlString
-            htmlString = results.append(htmlString); // <div> Ghana </>
+
+            htmlString += "<div>" + foundResults[i] + "</div>";
         }
+        // console.log(htmlString);
+        return htmlString;
         // return final string
     }
 })([
@@ -284,11 +290,3 @@
     "Zambia",
     "Zimbabwe",
 ]);
-
-// function move(h,w){
-
-// let sum = h+w;
-
-// }
-
-// move(5,7);
