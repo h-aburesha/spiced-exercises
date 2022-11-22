@@ -14,7 +14,7 @@
 
 let holesElements = Array.from(document.getElementsByClassName("hole"));
 let columnElements = Array.from(document.getElementsByClassName("column"));
-let wholeContainerArray = Array.from(document.getElementsByClassName("onscreen"));
+let wholeContainerArray = Array.from(document.getElementsByClassName("container"));
 
 let playerToMove = 1;
 let nrOfColumns = 7;
@@ -40,56 +40,59 @@ for (let columnIdx = 0; columnIdx < columnElements.length; columnIdx++) {
         const result = fillColumn(columnIdx); // 
         const successful = result.success;
         const filledIdx = result.filledIdx;
-    
-       
+        const diagonalIndex = result.diagonalIndex;
 
-
+         if (successful) {
             const hasColumnWin = checkColumnWin(columnIdx);
-            console.log("hasColumnWin: ", hasColumnWin);
+            // console.log(hasColumnWin);
             const hasRowWin = checkRowWin(filledIdx);
-            console.log("hasRowWin: ", hasRowWin);
+            // console.log(hasRowWin);
             const hasDiagonalWin = checkForDiagonalWin();
-            console.log("hasDiagonalWin", hasDiagonalWin)
+            // console.log(hasDiagonalWin)
             const isDraw = checkForDraw();
-            console.log("isDraw", isDraw);
+            // console.log(isDraw);
             // --> check if game has ended and log winner or draw
-    //     }
-    //     playerToMove = playerToMove === 1 ? 2 : 1;
-    //      }
+
+if (hasColumnWin || hasRowWin || hasDiagonalWin) {
+    gameResults = playerToMove
+    if (gameResults === 1){
+        //  console.log(gameResults)
+        
+        alert("Player YELLOW has Won! Press Start a new game")
+        
+    } else if (gameResults === 2) {
+        // console.log(gameResults)
+        
+        alert("Player RED has Won! Press Start a new game")
+        
+      
+    }
+   } else if (isDraw) {
+            //   use at least alert() function to show draw
+            
+            alert("DRAW - Press reset Button Above!")
+             }
+         }
          
     });
 }
 
-
-
-// function animateWin () {
-//     let index = 0;
-//     setTimeout(() => {
-//     if (gameResults === 1 || gameResults === 2){
-//         wholeContainerArray[index].classList.remove("onscreen")
-//         wholeContainerArray[index].classList.add("left")
+function animateWin () {
+    let index = 0;
+    setTimeout(() => {
+    if (gameResults === 1 || gameResults === 2){
+        wholeContainerArray[index].classList.add("left")
         
-//         index = index + 1;
-//         index = index === wholeContainerArray.length ? 0 : index;
-//         wholeContainerArray[index].classList.remove("left")
-//         wholeContainerArray[index].classList.add("right")
-//         wholeContainerArray[index].classList.remove("right")
-//         wholeContainerArray[index].classList.add("onscreen")
-//     } 
-// animateWin();
-//     }, 1500);
-// }
+        index = index + 1;
+        index = index === wholeContainerArray.length ? 0 : index;
+        wholeContainerArray[index].classList.add("right")
+    } 
+animateWin();
+    }, 3000);
+}
+animateWin();
 
-// animateWin();
 
-// function handleMove(columnIdx) {
-//         const result = fillColumn(columnIdx); // 
-//         const successful = result.success;
-//         const filledIdx = result.filledIdx;
-//     if (success) {
-       
-
-// }
 
 function fillColumn(columnIdx) {
     const startIdx = columnIdx * 6; // i multiplies by the number of rows;

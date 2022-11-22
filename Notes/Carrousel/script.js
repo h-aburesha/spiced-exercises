@@ -31,7 +31,7 @@ function moveImages() {
         // - add onscreen class
 
         moveImages();
-    }, 3000);
+    }, 1300);
 }
 
 moveImages();
