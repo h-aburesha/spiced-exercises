@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Handlebars</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      
+
+       
+
+        <!-- Example 3: Handlebars data Array -->
+        <section id="authors-section" class="cards-section"></section>
+
+        <script id="authorsTemplate" type="text/x-handlebars-template">
+            <!-- In here we are going to use HB -->
+            <h1>Authors: </h1>
+            <div class="card-container">
+                {{#authors}}
+            <div class="card">
+                <img src={{photo}} />
+                <div class="card-info">
+                    <h2>{{name}}</h2>
+                    <h3>{{born}}</h3>
+                    <h3>{{died}}</h3>
+                    <p>Favorite Quote: {{quote}}</p>
+                    <div class="wand-container">
+                        <p class="wand-title">selectedWritings: </p>
+                        <div>
+                            <!-- We loop through our wand key property -->
+                            {{#selectedWritings}}
+                                <p>{{.}}</p>
+                            {{/selectedWritings}}
+                        </div>
+                    </div>
+                </div>
+                {{/authors}}
+            </div>
+        </script>
+
+
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="./script.js"></script>
+</html>
