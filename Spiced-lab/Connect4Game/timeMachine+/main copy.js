@@ -14,35 +14,70 @@
 
 let holesElements = Array.from(document.getElementsByClassName("hole"));
 let columnElements = Array.from(document.getElementsByClassName("column"));
-let wholeContainerArray = Array.from(document.getElementsByClassName("container"));
+let wholeContainerArray = Array.from(
+    document.getElementsByClassName("container")
+);
 
 let playerToMove = 1;
 let nrOfColumns = 7;
 let nrOfRows = 6;
 let gameResults;
 
-
 let holes = [
-    0, 0, 0, 0, 0, 0,  // first column
-    0, 0, 0, 0, 0, 0,  // second column
-    0, 0, 0, 0, 0, 0,  // third column
-    0, 0, 0, 0, 0, 0,  // fourth column
-    0, 0, 0, 0, 0, 0,  // fifth column
-    0, 0, 0, 0, 0, 0,  // sixth column
-    0, 0, 0, 0, 0, 0,  // seventh column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // first column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // second column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // third column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // fourth column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // fifth column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // sixth column
+    0,
+    0,
+    0,
+    0,
+    0,
+    0, // seventh column
 ];
-
 
 // 2. CREATE MULTIPLE EVENT LISTENER
 
 for (let columnIdx = 0; columnIdx < columnElements.length; columnIdx++) {
     columnElements[columnIdx].addEventListener("click", () => {
-        const result = fillColumn(columnIdx); // 
+        const result = fillColumn(columnIdx); //
         const successful = result.success;
         const filledIdx = result.filledIdx;
         const diagonalIndex = result.diagonalIndex;
 
-         if (successful) {
+        if (successful) {
             const hasColumnWin = checkColumnWin(columnIdx);
             // console.log(hasColumnWin);
             const hasRowWin = checkRowWin(filledIdx);
@@ -53,46 +88,46 @@ for (let columnIdx = 0; columnIdx < columnElements.length; columnIdx++) {
             // console.log(isDraw);
             // --> check if game has ended and log winner or draw
 
-if (hasColumnWin || hasRowWin || hasDiagonalWin) {
-    gameResults = playerToMove
-    if (gameResults === 1){
-        //  console.log(gameResults)
-        
-        alert("Player YELLOW has Won! Press Start a new game")
-        
-    } else if (gameResults === 2) {
-        // console.log(gameResults)
-        
-        alert("Player RED has Won! Press Start a new game")
-        
-      
-    }
-   } else if (isDraw) {
-            //   use at least alert() function to show draw
-            
-            alert("DRAW - Press reset Button Above!")
-             }
-         }
-         
+            if (hasColumnWin || hasRowWin || hasDiagonalWin) {
+                gameResults = playerToMove;
+                if (playerToMove === 1) {
+                    //  console.log(gameResults)
+
+                    alert("Player red has Won! Press Start a new game");
+                } else if (playerToMove === 2) {
+                    // console.log(gameResults)
+
+                    alert("Player yellow has Won! Press Start a new game");
+                }
+
+                if (playerToMove === 1) {
+                    playerToMove = 2;
+                } else {
+                    playerToMove = 1;
+                }
+            } else if (isDraw) {
+                //   use at least alert() function to show draw
+
+                alert("DRAW - Press reset Button Above!");
+            }
+        }
     });
 }
 
-function animateWin () {
+function animateWin() {
     let index = 0;
     setTimeout(() => {
-    if (gameResults === 1 || gameResults === 2){
-        wholeContainerArray[index].classList.add("left")
-        
-        index = index + 1;
-        index = index === wholeContainerArray.length ? 0 : index;
-        wholeContainerArray[index].classList.add("right")
-    } 
-animateWin();
+        if (gameResults === 1 || gameResults === 2) {
+            wholeContainerArray[index].classList.add("left");
+
+            index = index + 1;
+            index = index === wholeContainerArray.length ? 0 : index;
+            wholeContainerArray[index].classList.add("right");
+        }
+        animateWin();
     }, 3000);
 }
 animateWin();
-
-
 
 function fillColumn(columnIdx) {
     const startIdx = columnIdx * 6; // i multiplies by the number of rows;
@@ -102,14 +137,7 @@ function fillColumn(columnIdx) {
         if (holes[i] === 0) {
             holes[i] = playerToMove;
             holesElements[i].classList.add("player" + playerToMove);
-
-            if (playerToMove === 1) {
-                playerToMove = 2;
-            } else {
-                playerToMove = 1;
-            }
             return { success: true, filledIdx: i };
-        
         }
     }
     return { success: false };
@@ -175,20 +203,21 @@ function checkRowWin(filledIdx) {
 }
 
 function checkForDiagonalWin() {
-    
-
-    for (let diagonalIndex = 0; diagonalIndex < winIndices.length; diagonalIndex++) {
-    // winInices.forEach(winPattern => {
+    for (
+        let diagonalIndex = 0;
+        diagonalIndex < winIndices.length;
+        diagonalIndex++
+    ) {
+        // winInices.forEach(winPattern => {
         // const hasWin = winPattern.every(winIndex => { // 0, 7, 14, 21
-        const hasWin = winIndices[diagonalIndex]
-                        .every(winIndex => { // 0, 7, 14, 21
-                            let currentHolePlayer = holes[winIndex] // numnber of the player who owns this hole
-                            let doesPlayerOwnCurrentHole = currentHolePlayer != 0 // equal to the current player that moves
-                            return doesPlayerOwnCurrentHole // we set hasWin to this
+        const hasWin = winIndices[diagonalIndex].every((winIndex) => {
+            // 0, 7, 14, 21
+            let currentHolePlayer = holes[winIndex]; // numnber of the player who owns this hole
+            let doesPlayerOwnCurrentHole = currentHolePlayer != 0; // equal to the current player that moves
+            return doesPlayerOwnCurrentHole; // we set hasWin to this
         });
         if (hasWin) {
-            
-            return true
+            return true;
         }
     }
 
@@ -196,12 +225,12 @@ function checkForDiagonalWin() {
 }
 
 function checkForDraw() {
-     for (let i = 0; i < holes.length; i++) {
-         if (holes[i] === 0) {
-         return false
-         }
-     } 
-     return true
+    for (let i = 0; i < holes.length; i++) {
+        if (holes[i] === 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 const winIndices = [

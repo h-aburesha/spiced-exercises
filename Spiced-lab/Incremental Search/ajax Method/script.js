@@ -46,9 +46,9 @@
             success: function (data) {
                 // do something with the data here
                 // console.log("data", data);
-                // console.log("data", data);
-                // console.log("$value", $value);
-                // console.log("input.val()", input.val());
+                console.log("data", data);
+                console.log("$value", $value);
+                console.log("input.val()", input.val());
                 results.show();
                 getResultsHtml(data);
                 //check if $value is the same as what is currently in the input field
@@ -111,13 +111,9 @@
         // if it is return a different HTML with fixed message
 
         for (let i = 0; i < data.length; i++) {
-            if (data.length === 0) {
-                return (htmlString += "<div>" + "not result found" + "</div>");
-            } else {
-                htmlString += "<div>" + data[i] + "</div>";
-            }
             // append HTML element to htmlString
 
+            htmlString += "<div>" + data[i] + "</div>";
             // console.log("dataGetResults: ", data[i]);
             // console.log("htmlString ", htmlString);
         }
