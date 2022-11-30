@@ -39,36 +39,40 @@ const fs = require("fs");
 const path = require("path");
 
 const myPath = __dirname;
+const objectsArrray = [];
 
 function mapSizes(myPath) {
     let createdObject = {};
+    let newFilePath;
+    let newDirPath;
+
     const filesAll = fs.readdirSync(myPath, { withFileTypes: true });
     console.log("Files All: ", filesAll);
 
     for (const entity of filesAll) {
         if (entity.isFile()) {
             const newFilePath = path.join(myPath, `${entity.name}`);
-            fs.stat(newFilePath, (err, stats) => {
-                if (err) {
-                    console.log("eff off");
-                } else {
-                    createdObject = {
-                        name: `${entity.name}`,
-                        value: `${stats.size}`,
-                    };
+            const stats = fs.statSync(newFilePath);
+            createdObject = {
+                name: `${entity.name}`,
+                value: `${stats.size}`,
+            };
+            objectsArrray.push(createdObject);
 
-                    console.log("createdObject: ", createdObject);
-                }
-                // console.log("newFilePath: ", newFilePath);
-                // console.log("Size: ", stats.size, "bytes!");
-            });
+            console.log("createdObject: ", createdObject);
         }
+        // console.log("newFilePath: ", newFilePath);
+        // console.log("Size: ", stats.size, "bytes!");
         if (entity.isDirectory()) {
             const newDirPath = path.join(myPath, `${entity.name}`);
             mapSizes(newDirPath);
         }
     }
-    return createdObject;
+    return objectsArrray;
 }
 
-console.log("JSON: ", JSON.stringify(mapSizes(myPath), null, 4));
+console.log(
+    "JSON: ",
+    mapSizes(myPath),
+    JSON.stringify(mapSizes(myPath), null, 4)
+);
