@@ -37,7 +37,6 @@ console.log(projectsArray);
 
 ------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------ */
-/*
 
 const projects = [
     { url: "/connect4", name: "Connect Four" },
@@ -73,9 +72,7 @@ function generateProjects() {
 
 // export function
 
-generateProjects(projects);
-console.log(generateProjects(projects));
+// generateProjects(projects);
+// console.log(generateProjects(projects));
 
-module.exports = { generateProjects }
-
-*/
+exports.generateProjects = generateProjects;
