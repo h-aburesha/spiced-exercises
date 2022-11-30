@@ -3,6 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const PORT = 8081;
 const dirCurrent = __dirname;
+// const generateProjects = require("/Users/h.aburesha/mint-code/Portfolio-fileServer/generate-projects.js");
+const url = require("url");
 
 const contentTypes = {
     ".html": "text/html",
@@ -15,6 +17,44 @@ const contentTypes = {
     ".svg": "image/svg+xml",
     ".ico": "image/x-icon",
 };
+
+const projects = [
+    { url: "/connect4", name: "Connect Four" },
+    { url: "/incremental-search", name: "Incremental Search" },
+    { url: "/kitty-carrousel", name: "Kitty Carrousel" },
+    { url: "/spotify-search", name: "Spotify Search" },
+    { url: "/ticker", name: "News Ticker" },
+];
+
+// OR more advanced version: use fs.readDirSync for example
+
+function generateProjects() {
+    let html = `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Projects </title>
+        </head>
+        <body>`;
+    for (let i = 0; i < projects.length; i++) {
+        html += `
+        <a href="${projects[i].url}">
+        <h1>${projects[i].name}</h1>
+        </a>
+        `;
+    }
+
+    // loop through the projects variable and add information to html variable
+    return html + `</body></html>`;
+}
+
+// export function
+
+generateProjects(projects);
+
+// require generate projects
 
 const server = http.createServer((req, res) => {
     req.on("error", (err) => {
@@ -35,7 +75,9 @@ const server = http.createServer((req, res) => {
 
     // 2.
     if (req.url === "/") {
-        res.end("Do homepage");
+        const finalHtml = generateProjects(projects);
+        res.setHeader("content-type", "text/html");
+        res.end(finalHtml);
     }
 
     // 3.
@@ -47,7 +89,7 @@ const server = http.createServer((req, res) => {
         if (pathExisting) {
             // if pathToCheck is a file, then
             if (fs.statSync(pathToCheck).isFile()) {
-                const fileContent = fs.readFileSync(pathToCheck);
+                const fileContent = fs.readFileSync(pathToCheck, "utf8");
                 const extension = path.extname(pathToCheck);
                 res.setHeader("content-type", contentTypes[extension]);
                 res.end(fileContent);
@@ -63,7 +105,10 @@ const server = http.createServer((req, res) => {
                     const indexHtmlPath = path.join(pathToCheck, "index.html");
                     if (fs.existsSync(indexHtmlPath)) {
                         // save content of index.html file with fs.readFileSync() into variable htmlContent;
-                        const htmlContent = fs.readFileSync(indexHtmlPath);
+                        const htmlContent = fs.readFileSync(
+                            indexHtmlPath,
+                            "utf8"
+                        );
                         res.end(htmlContent);
                     } else {
                         // set statuscode of response object to 404
@@ -71,9 +116,11 @@ const server = http.createServer((req, res) => {
                         res.end();
                     }
                 } else {
+                    res.statusCode = 307;
+                    res.setHeader("location", req.url + "/");
+                    res.end();
                     // set the statusCode of response object to 307
                     // set the response headers with setHeaders('location', req.url + '/')
-                    res.end();
                 }
             }
         } else {
