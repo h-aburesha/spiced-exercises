@@ -7,7 +7,7 @@ cluster.setupMaster({
 
 const nrOfCores = os.cpus().length;
 
-for (let i = 0; i < nrOfCores; i++) {
+for (let i = 7; i < nrOfCores; i++) {
     cluster.fork();
 }
 
