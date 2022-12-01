@@ -3,41 +3,6 @@ const path = require("path");
 const url = require("url");
 const dirCurrent = __dirname;
 
-/* ------------------------------------------------------------------------------------
-                        // OR use fs.readDirYnc for example
-   ------------------------------------------------------------------------------------
-
-let projectUrl;
-let projectName;
-
-const projectsArray = [];
-
-function renderResults(dirCurrent) {
-    const projectPath = path.join(dirCurrent, "projects");
-    const projectDirAll = fs.readdirSync(projectPath, { withFileTypes: true });
-
-    // console.log("projectDirAll ", projectDirAll);
-
-    for (const entity of projectDirAll) {
-        createdObject = {
-            projectUrl: `${projectPath}/${entity.name}`,
-            projectName: `${entity.name}`,
-        };
-
-        projectsArray.push(createdObject);
-
-        // console.log("createdObject: ", createdObject);
-    }
-
-    return projectsArray, projectUrl, projectName;
-}
-renderResults(dirCurrent);
-
-console.log(projectsArray);
-
-------------------------------------------------------------------------------------
------------------------------------------------------------------------------------- */
-
 const projects = [
     { url: "/connect4", name: "Connect Four" },
     { url: "/incremental-search", name: "Incremental Search" },
@@ -56,6 +21,11 @@ function generateProjects() {
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Projects </title>
+            <style>
+                body {background-color: powderblue;}
+                h1   {color: green;}
+                a    {color: blue;}
+                </style>
         </head>
         <body>`;
     for (let i = 0; i < projects.length; i++) {
