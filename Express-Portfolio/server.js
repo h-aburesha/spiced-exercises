@@ -1,32 +1,26 @@
 const http = require("http");
 const fs = require("fs");
-const path = require("path");
-const PORT = 8081;
-const dirCurrent = __dirname;
 const url = require("url");
+
+const path = require("path");
 const express = require("express");
 const app = express();
-
-// const generateProjects = require(".generate-projects").generateProjects;
-
-// import { generateProjects } from "./generate-projects.js";
-
+const cookieParser = require("cookie-parser");
 const generateProjects = require("./generate-projects").generateProjects;
+const basicAuth = require("basic-auth");
 
-const contentTypes = {
-    ".html": "text/html",
-    ".css": "text/css",
-    ".js": "text/javascript",
-    ".json": "application/json",
-    ".gif": "image/gif",
-    ".jpg": "image/jpeg",
-    ".png": "image/png",
-    ".svg": "image/svg+xml",
-    ".ico": "image/x-icon",
-};
+const PORT = 8081;
+const dirCurrent = __dirname;
+
+const staticMiddleware = express.static(path.join(dirCurrent, "projects"));
+
+const urlEncodedMiddleware = express.urlencoded({ extended: false });
+app.use(urlEncodedMiddleware);
 
 // simple middleware that will be executed for every request.
 // middleware is just a function
+
+/*
 app.use((req, res, next) => {
     if (req.method !== "GET") {
         res.statusCode = 404;
@@ -36,10 +30,75 @@ app.use((req, res, next) => {
         next(); // needs to be called
     }
 });
+*/
 
 // middleware to serve static files from a specific folder
-const staticMiddleware = express.static(path.join(dirCurrent, "projects"));
+
+// check if we are allowed to visit url by checking cookies
+app.use(cookieParser()); //
+
 app.use(staticMiddleware);
+
+const auth = function (req, res, next) {
+    const creds = basicAuth(req);
+    if (!creds || creds.name != "java?" || creds.pass != "script!") {
+        res.setHeader(
+            "WWW-Authenticate",
+            'Basic realm="Enter your credentials to see this stuff."'
+        );
+        res.sendStatus(401, "ACCESS DENIED!");
+    } else {
+        next();
+    }
+};
+
+app.use("/ticker/", auth);
+app.use(auth);
+
+app.use((req, res, next) => {
+    if (req.url.startsWith("/cookies")) {
+        next();
+    } else {
+        if (req.cookies.accepted === "on") {
+            next();
+        } else {
+            // save information about initial request in a global variable
+            res.redirect("/cookies/");
+        }
+    }
+});
+
+app.post("/cookies", (req, res) => {
+    console.log("Body of request: ", req.body);
+
+    res.cookie("accepted", req.body.cookies);
+    if (req.body.cookies === "on") {
+        res.redirect("/"); // redirect to the initial page
+    } else {
+        // else
+        res.redirect("/cookies"); // redirect to /cookies
+    }
+    // req.body.accepted;
+    console.log("Body of request: ", req.body);
+});
+
+app.get("/cookies", (req, res) => {
+    // Cookies that have not been signed
+    const cookiesPath = path.join(dirCurrent, "cookies", "index.html");
+    res.sendFile(cookiesPath);
+
+    console.log("Cookies: ", req.cookies);
+});
+
+app.get("/ticker/", auth, (req, res) => {
+    const tickerPath = path.join(
+        dirCurrent,
+        "projects",
+        "ticker",
+        "index.html"
+    );
+    res.sendFile(tickerPath);
+});
 
 app.get("/", (req, res) => {
     const finalHtml = generateProjects();
@@ -48,5 +107,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is listening at EXPRESS-HOST! ${PORT} 🍣`);
+    // console.log(`Server is listening at EXPRESS-HOST! ${PORT} 🧨`);
 });

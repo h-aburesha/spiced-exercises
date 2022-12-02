@@ -1,11 +1,28 @@
 {
-    "scripts": {
-        "dev": "http-server"
-    },
-    "dependencies": {
-        "chalk": "^4.0.0",
-        "cookie-parser": "^1.4.6",
-        "express": "^4.18.2",
-        "http-server": "^14.1.1"
-    }
+  "scripts": {
+    "dev": "http-server"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "chalk": "^4.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "http-server": "^14.1.1",
+    "tsscmp": "^1.0.6"
+  },
+  "name": "mint-code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spicedacademy/mint-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spicedacademy/mint-code/issues"
+  },
+  "homepage": "https://github.com/spicedacademy/mint-code#readme",
+  "description": ""
 }
