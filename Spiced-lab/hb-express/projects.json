@@ -1,0 +1,7 @@
+[
+    { "path": "/connect4", "name": "Connect 4 Game!" },
+    { "path": "/incremental-search", "name": "Incremental Search" },
+    { "path": "/kitty-carrousel", "name": "Kitty Carrousel" },
+    { "path": "/spotify-search", "name": "Spotify Search" },
+    { "path": "/ticker", "name": "News Ticker" }
+]

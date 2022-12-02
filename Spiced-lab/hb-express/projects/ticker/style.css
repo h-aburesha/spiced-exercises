@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#ticker {
+    overflow-x: hidden;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    right: 10%;
+    padding: 10px 0px;
+    box-sizing: border-box;
+    /* width: 100%; */
+    border: double 3px white;
+    background-color: #221e1f;
+}
+
+#headlines {
+    white-space: nowrap;
+    display: inline-block;
+    padding: 5px 5px;
+    position: relative;
+    width: 100%;
+}
+
+a {
+    padding: 0px 8px;
+    font-family: helvetica;
+    font: lighter 36pt;
+    color: aliceblue;
+}

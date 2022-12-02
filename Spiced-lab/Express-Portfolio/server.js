@@ -37,11 +37,9 @@ app.use((req, res, next) => {
 // check if we are allowed to visit url by checking cookies
 app.use(cookieParser()); //
 
-app.use(staticMiddleware);
-
 const auth = function (req, res, next) {
     const creds = basicAuth(req);
-    if (!creds || creds.name != "java?" || creds.pass != "script!") {
+    if (!creds || creds.name != "java?" || creds.pass != "script!!") {
         res.setHeader(
             "WWW-Authenticate",
             'Basic realm="Enter your credentials to see this stuff."'
@@ -52,8 +50,8 @@ const auth = function (req, res, next) {
     }
 };
 
-app.use("/ticker/", auth);
-app.use(auth);
+app.use("/ticker", auth);
+app.use(staticMiddleware);
 
 app.use((req, res, next) => {
     if (req.url.startsWith("/cookies")) {
@@ -63,7 +61,7 @@ app.use((req, res, next) => {
             next();
         } else {
             // save information about initial request in a global variable
-            res.redirect("/cookies/");
+            res.redirect("/cookies");
         }
     }
 });
@@ -90,16 +88,6 @@ app.get("/cookies", (req, res) => {
     console.log("Cookies: ", req.cookies);
 });
 
-app.get("/ticker/", auth, (req, res) => {
-    const tickerPath = path.join(
-        dirCurrent,
-        "projects",
-        "ticker",
-        "index.html"
-    );
-    res.sendFile(tickerPath);
-});
-
 app.get("/", (req, res) => {
     const finalHtml = generateProjects();
     res.setHeader("content-type", "text/html");
@@ -107,5 +95,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-    // console.log(`Server is listening at EXPRESS-HOST! ${PORT} 🧨`);
+    console.log(`Listening @ PORT:${PORT} 🧨`);
 });

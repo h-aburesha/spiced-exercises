@@ -1,0 +1,49 @@
+.container {
+    height: 600px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform: translateX(100%);
+    transition: transform 1200ms;
+    z-index: -1;
+}
+
+img[class~="onscreen"] {
+    transform: translateX(0%);
+    z-index: 1;
+}
+
+img[class~="hidden-left"] {
+    transform: translateX(-100%);
+    z-index: 1;
+}
+
+.navigation {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    bottom: 40px;
+    position: absolute;
+    width: 100%;
+}
+
+.navigation .dot {
+    height: 20px;
+    width: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.navigation .dot.selected {
+    background-color: white;
+}
