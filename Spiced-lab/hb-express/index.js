@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
 
-const teachers = require("./data.json");
-
 // console.log(teachers);
 
 // Handlebars Setup
 const { engine } = require("express-handlebars");
+const projects = require("./projects.json");
+
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 // End of setup
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
     res.render("home", {
         layout: "main",
         cohortName,
-        emojis: ["🎉", "🎧", "👨🏽‍💻"],
+        projects,
     });
 });
 
