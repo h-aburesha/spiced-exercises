@@ -18,6 +18,9 @@ const cohortName = "Mint";
 
 app.get("/", (req, res) => {
     res.render("home", {
+        //whatever you specify here,
+        // it will be used as a body in the main.handlebars!
+        // (i.e. home.handlebars)
         layout: "main",
         cohortName,
         projects,
