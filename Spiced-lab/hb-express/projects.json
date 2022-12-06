@@ -2,26 +2,31 @@
     {
         "path": "/connect4",
         "name": "Connect 4 Game!",
-        "image": "/screenshot.jpeg"
+        "image": "/screenshot.jpeg",
+        "describe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quam."
     },
     {
         "path": "/incremental-search",
         "name": "Incremental Search",
-        "image": "/screenshot.jpeg"
+        "image": "/screenshot.jpeg",
+        "describe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quam."
     },
     {
         "path": "/kitty-carrousel",
         "name": "Kitty Carrousel",
-        "image": "/screenshot.jpeg"
+        "image": "/screenshot.jpeg",
+        "describe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quam."
     },
     {
         "path": "/spotify-search",
         "name": "Spotify Search",
-        "image": "/screenshot.jpeg"
+        "image": "/screenshot.jpeg",
+        "describe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quam."
     },
     {
         "path": "/ticker",
         "name": "News Ticker",
-        "image": "/screenshot.jpeg"
+        "image": "/screenshot.jpeg",
+        "describe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida ex quam."
     }
 ]

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
+
+h2 {
+    font-family: "Times New Roman", Times, serif;
+    color: cornflowerblue;
+    font-size: 16px;
+    padding: 5px;
+    text-shadow: rgb(154 154 154 / 79%);
+}

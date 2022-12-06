@@ -1,5 +1,27 @@
-<h1>{{cohortName}}</h1>
-{{#projects}}
-    <div> <a href="{{path}}">{{name}}</a></div>
-    <div><img src="{{image}}" alt="image" /></div>
-{{/projects}}
+{{#if showImage}}
+    {{#projects}}
+        <div class="projects-container">
+            <div class="project">
+                <div>
+                    <img src="{{path}}/screenshot.jpeg" />
+                </div>
+                <div> <a href="projects{{path}}"><h2>{{name}}</h2></a></div>
+            </div>
+        </div>
+    {{/projects}}
+{{else}}
+    {{#projects}}
+        <div class="projects-container">
+            <div class="project">
+                <div> <a href="projects{{path}}"><h2>{{name}}</h2></a></div>
+            </div>
+        </div>
+    {{/projects}}
+{{/if}}
+
+{{#selectedProject}}
+    <img src="{{path}}/screenshot.jpeg" />
+    <p><a href="{{path}}">{{name}}</a></p>
+
+    <p>{{describe}}</p>
+{{/selectedProject}}
