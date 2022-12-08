@@ -1,5 +1,9 @@
+const headlines = $("#headlines");
+const ticker = $("#ticker");
+let firstLink;
+
 $(function () {
-    $.get(".http://localhost:8080/links.json", function (data) {
+    $.get("/links.json", function (data) {
         data.forEach((tickerTweet) => {
             $("#headlines").append(
                 `<a href="${tickerTweet.url}">${tickerTweet.text} - Dated: "${tickerTweet.date}"</a>`
@@ -8,12 +12,6 @@ $(function () {
     });
     moveLeft();
 });
-
-const headlines = $("#headlines");
-
-let firstLink;
-
-const ticker = $("#ticker");
 
 let widthOfHeadlines = ticker.outerWidth();
 console.log("widthOfHeadlines:", widthOfHeadlines);
@@ -33,7 +31,7 @@ function moveLeft() {
         }
 
         headlines.css({ left: currentLeftValue + "px" });
-        currentLeftValue -= 5;
+        currentLeftValue -= 1;
         moveLeft();
     });
 }
