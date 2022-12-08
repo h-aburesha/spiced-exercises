@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    padding: 10;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+#headlines {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    white-space: nowrap;
+    left: 95%;
+}
+
+#ticker {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    border: double 3px white;
+    overflow-x: hidden;
+    background-color: #221e1f;
+}
+
+a {
+    padding-right: 17px;
+    text-decoration: none;
+    color: blueviolet;
+    font-family: helvetica;
+    font: lighter 36pt;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red;
+}
