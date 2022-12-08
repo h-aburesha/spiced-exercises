@@ -1,16 +1,8 @@
 $(function () {
-    $.get("./links.json", function (data) {
-        data.forEach((tickerElement) => {
+    $.get(".http://localhost:8080/links.json", function (data) {
+        data.forEach((tickerTweet) => {
             $("#headlines").append(
-                '<a href="' +
-                    tickerElement.url +
-                    '"target="_blank">' +
-                    "<b>" +
-                    tickerElement.name +
-                    "</b>" +
-                    ": " +
-                    tickerElement.text +
-                    "</a>"
+                `<a href="${tickerTweet.url}">${tickerTweet.text} - Dated: "${tickerTweet.date}"</a>`
             );
         });
     });
