@@ -33,7 +33,7 @@ function moveLeft() {
         }
 
         headlines.css({ left: currentLeftValue + "px" });
-        currentLeftValue -= 1;
+        currentLeftValue -= 3;
         moveLeft();
     });
 }

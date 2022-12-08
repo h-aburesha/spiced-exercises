@@ -30,6 +30,7 @@ em {
     overflow-x: hidden;
     background-color: #221e1f;
     box-shadow: 1px 0px 25px 6px rgb(154 154 154 / 79%);
+    margin-top: 8vh;
 }
 
 a {
