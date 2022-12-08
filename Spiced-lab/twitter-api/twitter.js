@@ -92,9 +92,10 @@ function filterTweets(tweets) {
     const newTweets = filteredTweets.map((tweet) => {
         // TASK for later: move urls from text
         return {
-            text: tweet.text,
-            url: tweet.entities.urls[0].url,
-            date: tweet.created_at,
+            newsProviderName: tweet.user.name,
+            tweetText: tweet.text,
+            tweetUrl: tweet.entities.urls[0].url,
+            tweetDate: tweet.created_at,
         };
     });
     return newTweets;

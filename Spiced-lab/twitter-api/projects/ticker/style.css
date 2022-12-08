@@ -6,6 +6,12 @@
 
 body {
     overflow: hidden;
+    background-color: beige;
+}
+
+em {
+    color: goldenrod;
+    font-weight: bold;
 }
 
 #headlines {
@@ -23,17 +29,18 @@ body {
     border: double 3px white;
     overflow-x: hidden;
     background-color: #221e1f;
+    box-shadow: 1px 0px 25px 6px rgb(154 154 154 / 79%);
 }
 
 a {
     padding-right: 17px;
     text-decoration: none;
-    color: blueviolet;
+    color: whitesmoke;
     font-family: helvetica;
     font: lighter 36pt;
 }
 
 a:hover {
     text-decoration: underline;
-    color: red;
+    color: lightblue;
 }
