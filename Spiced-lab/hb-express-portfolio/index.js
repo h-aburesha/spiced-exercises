@@ -50,4 +50,4 @@ app.get("/projects/:projectDirectory", (req, res) => {
         });
 });
 
-app.listen(3000, console.log("running at 3000"));
+app.listen(3001, console.log("running at 3001"));
